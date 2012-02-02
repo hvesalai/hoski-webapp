@@ -21,6 +21,9 @@ object Dependencies {
   // embedded jetty
   var jetty = "org.mortbay.jetty" % "jetty" % "6.1.22" % "container"
 
+  // json
+  var json = "org.json" % "json" % "20090211" % "compile"
+
   // logging
   val slf4jApi = "org.slf4j" % "slf4j-api" % "1.6.1" % "compile"
   val slf4jBinding = "ch.qos.logback" % "logback-classic" % "0.9.28" % "runtime"
@@ -34,6 +37,7 @@ object HoskiBuild extends Build {
   val deps = Seq (
 //    slf4jApi,
 //    slf4jBinding,
+    json,
     junitInterface,
     servletTester,
     servletApi,
@@ -45,8 +49,8 @@ object HoskiBuild extends Build {
     file ("."),
     settings = buildSettings
   )
-  .settings(libraryDependencies ++= deps /*,
-            javacOptions ++= Seq("-Xlint:unchecked")*/)
+  .settings(libraryDependencies ++= deps,
+            javacOptions ++= Seq("-Xlint:unchecked"))
   .settings(webSettings :_*)
 
 }

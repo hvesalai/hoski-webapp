@@ -1,9 +1,20 @@
 package fi.hoski.web.auth;
 
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.UnavailableException;
 
 public interface UserDirectory {
+
+  /**
+   * List of secret fields
+   */
+  public static final List<String> SECRET_FIELDS = new ArrayList<String>() {{
+    add(LATEST_ACTIVATION);
+    add(PASSWORD);
+  }};
+
   
   /**
    * Key of the latest activation.
