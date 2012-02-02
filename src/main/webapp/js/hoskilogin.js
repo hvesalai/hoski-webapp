@@ -37,7 +37,6 @@ $(function () {
   var logoutform = $("#hoskilogout");
   var hoskiuser = $("#hoskiuser");
   var hoskiloginerrors = $("#hoskiloginerrors");
-  var loginstatusurl = loginform.attr("action");
   
   function updateStatus() {
     loginform.hide();
@@ -45,7 +44,7 @@ $(function () {
     hoskiuser.hide();
     hoskiloginerrors.hide();
 
-    $.getJSON(loginstatusurl, function(data) {
+    $.getJSON(loginform.attr("action"), function(data) {
       if (data.user) {
         // TODO: use user name instead of email
         hoskiuser.text(data.user.email).show();
@@ -74,5 +73,7 @@ $(function () {
         updateStatus();
       });
   }
+
+  updateStatus();
 });
 
